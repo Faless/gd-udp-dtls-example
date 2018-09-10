@@ -25,12 +25,8 @@ func _process(delta):
 
 func _on_connect_pressed():
 	_log("Connect to %s %d: %d" % [ADDR, PORT, udp.connect_to_host(ADDR, PORT)])
-	print(udp.get_available_packet_count())
-	print(udp.put_packet(PoolByteArray()))
-	print(udp.get_available_packet_count())
 	if dtls:
-		secure.blocking_handshake = false
-		secure.connect_to_peer(udp)
+		secure.connect_to_peer(udp, true, "aserver", load("res://cert/generated.crt"))
 
 func _on_send_pressed():
 	if dtls:
