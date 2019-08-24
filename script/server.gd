@@ -65,6 +65,7 @@ func _poll_client(c):
 			var port = c.get_packet_port()
 			_log("Got %s from %s %s" % [pkt.get_string_from_utf8(), addr, port])
 		c.put_packet(pkt)
+	return true
 
 func _on_Host_pressed():
 	_log("Setup: %s" % dtls_server.setup(_key, _cert, null))
