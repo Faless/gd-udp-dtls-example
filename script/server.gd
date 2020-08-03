@@ -16,6 +16,7 @@ func _log(msg):
 	$H/logs.text += str(msg) + "\n"
 
 func _process(delta):
+	udp_server.poll()
 	if udp_server.is_connection_available():
 		# Try to perform DTLS handshake
 		_take_connection()
